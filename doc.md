@@ -8,7 +8,7 @@
 
 ### 1.1 初始化项目
 
-```
+```js
 mkdir umi3
 npm init -y
 cnpm i umi -D
