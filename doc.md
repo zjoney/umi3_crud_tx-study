@@ -20,7 +20,7 @@ cnpm i umi -D
 
 src\pages\index.js
 
-```
+```js
 import React from 'react';
 const Index = ()=><div>首页</div>
 export default Index
