@@ -30,7 +30,7 @@ export default Index
 
 src\pages\profile.js
 
-```
+```js
 import React from 'react';
 const Profile = ()=><div>个人中心</div>
 export default Profile;
@@ -40,7 +40,7 @@ export default Profile;
 
 src\pages\user\_layout.js
 
-```
+```js
 import React from 'react';
 const UserLayout = (props)=>(
     <div>
@@ -58,7 +58,7 @@ export default UserLayout;
 
 src\pages\user\add.js
 
-```
+```js
 import React from 'react';
 const UserAdd = ()=><div>添加用户</div>
 export default UserAdd;
@@ -68,7 +68,7 @@ export default UserAdd;
 
 src\pages\user\list.js
 
-```
+```js
 import React from 'react';
 const UserList = ()=><div>用户列表</div>
 export default UserList;
