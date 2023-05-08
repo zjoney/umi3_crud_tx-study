@@ -86,7 +86,7 @@ package.json
 
 #### 1.2.7 启动
 
-```
+```js
 npm run dev
 ```
 
@@ -102,7 +102,7 @@ npm run dev
 
 ### 2.1.1 launch.json
 
-```
+```js
 {
     "version": "0.2.0",
     "configurations": [
@@ -129,7 +129,7 @@ npm run dev
 
 package.json
 
-```
+```js
   "scripts": {
     "dev": "umi dev",
 +   "debug": "node --inspect-brk=9229  ./node_modules/_umi@3.3.1@umi/bin/umi.js dev"
@@ -140,7 +140,7 @@ package.json
 
 .vscode\launch.json
 
-```
+```js
 {
     "version": "0.2.0",
     "configurations": [
@@ -156,7 +156,7 @@ package.json
 
 .vscode\launch.json
 
-```
+```js
 {
     "version": "0.2.0",
     "configurations": [
@@ -174,7 +174,7 @@ package.json
 
 ### 3.1 安装
 
-```
+```js
 cnpm i webpack webpack-cli webpack-dev-server html-webpack-plugin  babel-loader @babel/core @babel/preset-env @babel/preset-react webpack-dev-middleware express mustache cnpm react react-dom react-router-dom -S
 ```
 
@@ -182,7 +182,7 @@ cnpm i webpack webpack-cli webpack-dev-server html-webpack-plugin  babel-loader 
 
 src.umi2\core\history.js
 
-```
+```js
 import { createBrowserHistory } from 'history';
 let history = createBrowserHistory();
 export default history;
@@ -192,7 +192,7 @@ export default history;
 
 src.umi2\core\routes.js
 
-```
+```js
 export function getRoutes() {
   const routes = [
     {
@@ -230,7 +230,7 @@ export function getRoutes() {
 
 src.umi2\umi.js
 
-```
+```js
 import React from 'react';
 import { render } from 'react-dom';
 import { Router,Route,Switch } from 'react-router-dom';
@@ -268,7 +268,7 @@ renderClient(opts);
 
 src.umi2\index.html
 
-```
+```js
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -284,7 +284,7 @@ src.umi2\index.html
 
 ### 3.6 webpack.config.js
 
-```
+```js
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const cwd = process.cwd();
@@ -329,7 +329,7 @@ module.exports = {
 
 ### 3.7 启动
 
-```
+```js
 webpack serve 
 ```
 
@@ -344,7 +344,7 @@ webpack serve
 
 bin\umi.js
 
-```
+```js
 #!/usr/bin/env node
 require('../lib/cli');
 ```
@@ -353,7 +353,7 @@ require('../lib/cli');
 
 lib\cli.js
 
-```
+```js
 let Service = require('./Service');
 let dev = require('./plugins/commands/dev');
 (async()=>{
@@ -368,7 +368,7 @@ let dev = require('./plugins/commands/dev');
 
 lib\PluginAPI.js
 
-```
+```js
 class PluginAPI {
     constructor(opts) {
         this.id = opts.id;
@@ -386,7 +386,7 @@ module.exports = PluginAPI;
 
 lib\Service.js
 
-```
+```js
 const PluginAPI = require('./PluginAPI');
 class Service {
   constructor(opts) {
@@ -416,7 +416,7 @@ module.exports = Service;
 
 lib\plugins\commands\dev.js
 
-```
+```js
 let Server = require('../../Server');
 const dev = (api) => {
   api.registerCommand({
@@ -434,7 +434,7 @@ module.exports = dev;
 
 lib\Server.js
 
-```
+```js
 let express = require('express');
 let http = require('http');
 class Service {
@@ -453,7 +453,7 @@ module.exports = Service;
 
 ### 4.7 启动服务
 
-```
+```js
 node ./bin/umi.js
 ```
 
@@ -463,7 +463,7 @@ node ./bin/umi.js
 
 lib\Service.js
 
-```
+```js
 const PluginAPI = require('./PluginAPI');
 +const {AsyncParallelHook} = require('tapable');
 class Service {
@@ -516,7 +516,7 @@ module.exports = Service;
 
 lib\PluginAPI.js
 
-```
+```js
 class PluginAPI {
     constructor(opts) {
         this.id = opts.id;
@@ -539,7 +539,7 @@ module.exports = PluginAPI;
 
 lib\cli.js
 
-```
+```js
 let Service = require('./Service');
 let dev = require('./plugins/commands/dev');
 +let history = require('./plugins/generateFiles/history');
@@ -562,7 +562,7 @@ let dev = require('./plugins/commands/dev');
 
 webpack.config.js
 
-```
+```js
 module.exports = {
    mode: "development",
 +  entry:'./src/.umi3/umi.js'
@@ -573,7 +573,7 @@ module.exports = {
 
 lib\plugins\commands\dev.js
 
-```
+```js
 let Server = require('../../Server');
 const dev = (api) => {
   api.registerCommand({
@@ -595,7 +595,7 @@ module.exports = dev;
 
 lib\getPaths.js
 
-```
+```js
 const {existsSync,statSync} = require('fs');
 const {join} = require('path');
 function isDirectoryAndExist(path) {
@@ -621,7 +621,7 @@ module.exports = {
 
 lib\utils.js
 
-```
+```js
 function winPath(path) {
     return path.replace(/\/g, "/");
 }
@@ -632,7 +632,7 @@ exports.winPath = winPath;
 
 lib\writeTmpFile.js
 
-```
+```js
 let mkdirp = require('mkdirp');
 let {writeFileSync} = require('fs');
 let {dirname,join} = require('path');
@@ -649,7 +649,7 @@ module.exports = writeTmpFile;
 
 lib\plugins\generateFiles\history.js
 
-```
+```js
 let { readFileSync } = require("fs");
 let { join } = require("path");
 let writeTmpFile = require("../../writeTmpFile");
@@ -672,7 +672,7 @@ module.exports = plugin;
 
 lib\plugins\generateFiles\history.tpl
 
-```
+```js
 import { createBrowserHistory } from 'history';
 let history = createBrowserHistory();
 export default history;
@@ -682,7 +682,7 @@ export default history;
 
 lib\plugins\generateFiles\umi.js
 
-```
+```js
 let { readFileSync } = require("fs");
 let { join } = require("path");
 let writeTmpFile = require("../../writeTmpFile");
@@ -704,7 +704,7 @@ module.exports = plugin;
 
 lib\plugins\generateFiles\umi.tpl
 
-```
+```js
 import React from 'react';
 import { render } from 'react-dom';
 import { Router,Route,Switch } from 'react-router-dom';
@@ -742,7 +742,7 @@ renderClient(opts);
 
 lib\getRoutes.js
 
-```
+```js
 const { existsSync, readdirSync, readFileSync, statSync } = require("fs");
 const { basename,extname,join,relative } = require("path");
 const {winPath} = require('./utils');
@@ -808,7 +808,7 @@ module.exports = routes;
 
 lib\plugins\generateFiles\routes.js
 
-```
+```js
 let { readFileSync } = require("fs");
 let { join } = require("path");
 let writeTmpFile = require("../../writeTmpFile");
@@ -842,7 +842,7 @@ module.exports = plugin;
 
 lib\plugins\generateFiles\routes.tpl
 
-```
+```js
 export function getRoutes() {
   const routes = {{{ routes }}};
   return routes;
@@ -851,7 +851,7 @@ export function getRoutes() {
 
 ### 5.16 启动
 
-```
+```js
 webpack serve 
 ```
 
@@ -859,7 +859,7 @@ webpack serve
 
 ### 6.1 lib\Service.js
 
-```
+```js
 const express = require('express');
 const http = require('http');
 +const webpack = require('webpack');
@@ -899,7 +899,7 @@ module.exports = Service;
 
 ### 6.2 lib\index.html
 
-```
+```js
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -917,7 +917,7 @@ module.exports = Service;
 
 lib\webpack.config.js
 
-```
+```js
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const cwd = process.cwd();
@@ -959,7 +959,7 @@ module.exports = {
 
 src\app.js
 
-```
+```js
 export function patchRoutes({routes}) {
   routes.unshift({
     path: '/foo',
