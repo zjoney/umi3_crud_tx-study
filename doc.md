@@ -973,7 +973,7 @@ export function patchRoutes({routes}) {
 
 src\foo.js
 
-```
+```js
 import React from 'react';
 const Foo = (props) => {
   return (
@@ -987,7 +987,7 @@ export default Foo;
 
 src.umi3\core\plugin.js
 
-```
+```js
 class Plugin {
     constructor(){
         this.hooks = {};
@@ -1020,7 +1020,7 @@ export { plugin }
 
 src.umi3\core\routes.js
 
-```
+```js
 +import { plugin } from './plugin';
 export function getRoutes() {
   const routes = [
@@ -1049,7 +1049,7 @@ export function getRoutes() {
 
 lib\plugins\generateFiles\plugin.js
 
-```
+```js
 let { readFileSync,existsSync } = require("fs");
 let { join } = require("path");
 let writeTmpFile = require("../../writeTmpFile");
@@ -1081,7 +1081,7 @@ module.exports = plugin;
 
 lib\plugins\generateFiles\plugin.tpl
 
-```
+```js
 import { plugin } from './plugin';
 class Plugin {
     constructor(){
@@ -1120,7 +1120,7 @@ export { plugin }
 
 lib\plugins\generateFiles\routes.tpl
 
-```
+```js
 +import {plugin} from './plugin';
 export function getRoutes() {
   const routes = {{{ routes }}};
